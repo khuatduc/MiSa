@@ -1,0 +1,14 @@
+    int newSelectedIndex = determineIdealSelectedIndex(nowMs, chunkDurationUs);
+    float max=0;
+    int tem0=-1;
+    float sum=0;
+    for(int i=0;i<=7;i++){
+      int abc=(int)(getFormat(i).bitrate)-(int)getFormat(previousSelectedIndex).bitrate;
+      sum=(int)(getFormat(i).bitrate)-4.3f*((((int)(getFormat(i).bitrate)*2)/bitrateEstimate)-bufferedDurationUs)-abs(abc);
+      if(sum>max){
+        max=sum;
+        tem0=i;
+      }
+
+    }
+   selectedIndex=tem0;System.out.println("selectedIndex::"+selectedIndex+ "buffer::"+bufferedDurationUs);
